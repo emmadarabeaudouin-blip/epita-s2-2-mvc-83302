@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="epita-s2-2-mvc-83302/epita-s2-2-mvc-83302.csproj" />
+  <Project Path="FSIT.Domain/FSIT.Domain.csproj" />
+  <Project Path="FSIT.Tests/FSIT.Tests.csproj" />
+</Solution>
