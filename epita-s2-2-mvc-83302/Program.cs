@@ -44,7 +44,10 @@ var app = builder.Build();
 app.UseSerilogRequestLogging();
 
 if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
+}
 else
 {
     app.UseExceptionHandler("/Home/Error");

@@ -1,0 +1,16 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Something went wrong";
+}
+
+<div class="text-center mt-5">
+    <h1 class="text-danger">Oops! Something went wrong.</h1>
+    <p class="text-muted">An unexpected error occurred. Please try again later.</p>
+    @if (Model.ShowRequestId)
+    {
+        <p><small>Request ID: <code>@Model.RequestId</code></small></p>
+    }
+    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-primary mt-3">
+        Back to Dashboard
+    </a>
+</div>
