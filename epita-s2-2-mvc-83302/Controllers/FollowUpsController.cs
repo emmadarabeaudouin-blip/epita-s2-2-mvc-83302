@@ -49,15 +49,19 @@ public class FollowUpsController(ApplicationDbContext context) : Controller
         if (!ModelState.IsValid)
         {
             ViewData["InspectionId"] = new SelectList(
-    context.Inspections.Include(i => i.Premises)
-        .Select(i => new { i.Id, Display = i.Premises.Name + " – " + i.InspectionDate.ToShortDateString() }),
-    "Id", "Display", followUp.InspectionId);
+                context.Inspections.Include(i => i.Premises)
+                    .Select(i => new { i.Id, Display = i.Premises.Name + " – " + i.InspectionDate.ToShortDateString() }),
+                "Id", "Display", followUp.InspectionId);
+
+            return View(followUp);
         }
 
         context.Add(followUp);
         await context.SaveChangesAsync();
+
         Log.Information("FollowUp created: {FollowUpId} for InspectionId {InspectionId}, DueDate: {DueDate}",
             followUp.Id, followUp.InspectionId, followUp.DueDate);
+
         return RedirectToAction(nameof(Index));
     }
 
